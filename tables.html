@@ -11,7 +11,6 @@
     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="server.js"></script>
 </head>
 <div class="card">
     <div class="card-header">
@@ -50,10 +49,10 @@
         else {
           $("#waitingList").append( 
 `
-        Name: ${data[i].name} <br>
-        Phone No: ${data[i].phone} <br>
-        Time: ${data[i].time} <br> <hr>
-        
+  Name: ${data[i].name} <br>
+  Phone No: ${data[i].phone} <br>
+  Time: ${data[i].time} <br> <hr>
+
         `
          )
         }

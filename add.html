@@ -81,8 +81,8 @@
                 event.preventDefault();
                 var newGuest = {
                   name: $("#name").val().trim().replace(/[^a-zA-Z+]/g, ""),
-                  phone: $("#phone").val().trim().replace(/[^0-9+]/g, ""),
-                  time: $("#time").val().trim().replace(/[^0-9+]/g, "")
+                  phone: $("#phone").val().trim().replace(/[^0-9+]/g, "").replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3"),
+                  time: $("#time").val().trim().replace(/[^0-9+]/g, "").replace(/(\d{2})(\d{2})/, "$1:$2"),
                 };
           
                 // Question: What does this code do??
