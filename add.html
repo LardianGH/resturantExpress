@@ -80,9 +80,9 @@
               $("#add-btn").on("click", function(event) {
                 event.preventDefault();
                 var newGuest = {
-                  name: $("#name").val().trim(),
-                  phone: $("#phone").val().trim(),
-                  time: $("#time").val().trim()
+                  name: $("#name").val().trim().replace(/[^a-zA-Z+]/g, ""),
+                  phone: $("#phone").val().trim().replace(/[^0-9+]/g, ""),
+                  time: $("#time").val().trim().replace(/[^0-9+]/g, "")
                 };
           
                 // Question: What does this code do??
@@ -93,7 +93,7 @@
                   });
 
                   $.get("/api/guests/", function(data) {
-                    if (data.length >= 5) {
+                    if (data.length > 5) {
                       alert("Waiting list")
                     }
                     });

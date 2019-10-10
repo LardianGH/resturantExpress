@@ -6,7 +6,7 @@ var path = require("path");
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = 3001;
+var PORT = 3002;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -22,28 +22,6 @@ var guests = [
     time: "4:30"
   },
 ];
-
-var tables = [
-{
-  number: 1
-},
-{
-  number: 2
-},
-{
-  number: 3
-},
-{
-  number: 4
-},
-{
-  number: 5
-},
-]
-
-var waiting = [
-
-]
 
 // Routes
 // =============================================================
