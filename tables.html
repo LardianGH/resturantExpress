@@ -11,38 +11,54 @@
     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+  <script src="server.js"></script>
+</head>
 <div class="card">
     <div class="card-header">
       <h3><strong>List of Tables</strong></h3>
     </div>
     <div class="card-body">
       <h4 id="tables"></h4>
-      <div id="info">
-        <h4><strong>Table No:</strong> <span id="table"></span></h4>
-        <h4><strong>Name:</strong> <span id="name"></span></h4>
-        <h4><strong>Phone No:</strong> <span id="phone"></span></h4>
-        <h4><strong>Time:</strong> <span id="phone"></span></h4>
-        <br>
-        <h4><strong>Table No:</strong> <span id="table"></span></h4>
-        <h4><strong>Name:</strong> <span id="name"></span></h4>
-        <h4><strong>Phone No:</strong> <span id="phone"></span></h4>
-        <h4><strong>Time:</strong> <span id="phone"></span></h4>
-        <br>
-        <h4><strong>Table No:</strong> <span id="table"></span></h4>
-        <h4><strong>Name:</strong> <span id="name"></span></h4>
-        <h4><strong>Phone No:</strong> <span id="phone"></span></h4>
-        <h4><strong>Time:</strong> <span id="phone"></span></h4>
-        <br>
-        <h4><strong>Table No:</strong> <span id="table"></span></h4>
-        <h4><strong>Name:</strong> <span id="name"></span></h4>
-        <h4><strong>Phone No:</strong> <span id="phone"></span></h4>
-        <h4><strong>Time:</strong> <span id="phone"></span></h4>
-        <br>
-        <h4><strong>Table No:</strong> <span id="table"></span></h4>
-        <h4><strong>Name:</strong> <span id="name"></span></h4>
-        <h4><strong>Phone No:</strong> <span id="phone"></span></h4>
-        <h4><strong>Time:</strong> <span id="phone"></span></h4>
-        <br>
+      <div id="tableList">
+       
       </div>
+      <h3><strong>Waiting list</strong></h3>
+      <div id="waitingList">
+       
+      </div>
+      
     </div>
+
+    <script>  
+    
+    
+    $.get("/api/guests/", function(data) {
+        console.log(data);
+       for (i = 0; i < data.length; i++) {
+        console.log(data[i])
+        
+        if (i < 5) {
+        $("#tableList").append( 
+          ` Table No : ${i + 1} <br>
+        Name: ${data[i].name} <br>
+        Phone No: ${data[i].phone} <br>
+        Time: ${data[i].time} <br> <hr>
+        
+        `
+         )
+        }
+        else {
+          $("#waitingList").append( 
+`
+        Name: ${data[i].name} <br>
+        Phone No: ${data[i].phone} <br>
+        Time: ${data[i].time} <br> <hr>
+        
+        `
+         )
+        }
+       }
+      });
+
+    </script>
+    </html>

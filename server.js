@@ -6,7 +6,7 @@ var path = require("path");
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = 3000;
+var PORT = 3001;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -23,17 +23,44 @@ var guests = [
   },
 ];
 
+var tables = [
+{
+  number: 1
+},
+{
+  number: 2
+},
+{
+  number: 3
+},
+{
+  number: 4
+},
+{
+  number: 5
+},
+]
+
+var waiting = [
+
+]
+
 // Routes
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/add", function(req, res) {
+app.get("/add.html", function(req, res) {
   res.sendFile(path.join(__dirname, "add.html"));
 });
+
+app.get("/tables.html", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
+});
+
 
 // Displays all guests
 app.get("/api/guests", function(req, res) {
@@ -43,7 +70,7 @@ app.get("/api/guests", function(req, res) {
 // Create New Characters - takes in JSON input
 app.post("/api/guests", function(req, res) {
  
-  var newTable = req.body;
+  var newGuest = req.body;
 
   newGuest.routeName = newGuest.name.replace(/\s+/g, "").toLowerCase();
 
@@ -52,6 +79,11 @@ app.post("/api/guests", function(req, res) {
   guests.push(newGuest);
 
   res.json(newGuest);
+});
+
+app.post("/tables.html", function(req, res) {
+ 
+  $append("hi")
 });
 
 // Starts the server to begin listening

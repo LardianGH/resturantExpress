@@ -55,17 +55,17 @@
 
               <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="table">
+                <input type="text" class="form-control" id="name">
               </div>
 
               <div class="form-group">
-                <label for="role">Phone Number:</label>
-                <input type="text" class="form-control" id="role">
+                <label for="phone">Phone Number:</label>
+                <input type="text" class="form-control" id="phone">
               </div>
 
               <div class="form-group">
-                <label for="role">Time:</label>
-                <input type="text" class="form-control" id="role">
+                <label for="time">Time:</label>
+                <input type="text" class="form-control" id="time">
               </div>
 
 
@@ -75,30 +75,31 @@
               <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Add Table</button>
             </div>
 
-<!--   <script type="text/javascript">
-    $("#search-btn").on("click", function() {
-      var searchedCharacter = $("#character-search").val().trim();
+            <script type="text/javascript">
+              // Question: What does this code do?
+              $("#add-btn").on("click", function(event) {
+                event.preventDefault();
+                var newGuest = {
+                  name: $("#name").val().trim(),
+                  phone: $("#phone").val().trim(),
+                  time: $("#time").val().trim()
+                };
+          
+                // Question: What does this code do??
+                $.post("/api/guests", newGuest)
+                  .then(function(data) {
+                    console.log("add.html", data);
+                    alert("Adding guest...");
+                  });
 
-      // Using a RegEx Pattern to remove spaces from searchedCharacter
-      // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-      searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
-
-      $.get("/api/characters/" + searchedCharacter, function(data) {
-        console.log(data);
-        if (data) {
-          $("#stats").show();
-          $("#name").text(data.name);
-          $("#role").text(data.role);
-          $("#age").text(data.age);
-          $("#force-points").text(data.forcePoints);
-        } else {
-          $("#name").text(
-            "The force is not strong with this one. Your character was not found.");
-          $("#stats").hide();
-        }
-      });
-    });
- -->
+                  $.get("/api/guests/", function(data) {
+                    if (data.length >= 5) {
+                      alert("Waiting list")
+                    }
+                    });
+            
+              });
+            </script>
   </script>
 </body>
 
